@@ -57,8 +57,10 @@ CREATE TABLE IF NOT EXISTS predictions (
 conn.commit()
 
 # ---------------- LOAD MODEL ----------------
-import joblib
-model = joblib.load("loan_xgboost_pipeline.pkl")
+import pickle
+
+with open("loan_xgboost_pipeline.pkl", "rb") as f:
+    model = pickle.load(f)
 
 # ---------------- LOAD LOGO ----------------
 def get_base64_image(path):
