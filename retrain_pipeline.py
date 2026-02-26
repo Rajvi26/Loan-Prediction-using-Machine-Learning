@@ -51,9 +51,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 pipeline.fit(X_train, y_train)
 
 # Save
-import pickle
+import joblib
 
-with open("loan_xgboost_pipeline.pkl", "wb") as f:
-    pickle.dump(pipeline, f)
+joblib.dump(pipeline, "loan_xgboost_pipeline.pkl")
 
 print("Model retrained successfully!")
