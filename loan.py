@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pickle
 import base64
 import sqlite3
 from datetime import datetime
@@ -57,10 +56,8 @@ CREATE TABLE IF NOT EXISTS predictions (
 conn.commit()
 
 # ---------------- LOAD MODEL ----------------
-import pickle
-
-with open("loan_xgboost_pipeline.pkl", "rb") as f:
-    model = pickle.load(f)
+import joblib
+model = joblib.load("loan_xgboost_pipeline.pkl")
 
 # ---------------- LOAD LOGO ----------------
 def get_base64_image(path):
